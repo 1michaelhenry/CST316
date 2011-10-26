@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'FirstBlog.views.home', name='home'),
     # url(r'^FirstBlog/', include('FirstBlog.foo.urls')),
     url(r'^$', 'CST316.blog.views.home', name='home'),
-    url(r'^login$', 'CST316.blog.views.login', name='login'),
     url(r'^auth$', 'CST316.blog.views.auth', name='auth'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/$', include('django.contrib.admindocs.urls')),
@@ -17,5 +16,5 @@ urlpatterns = patterns('',
     url(r'^postblog$', 'CST316.blog.views.postblog', name='postblog'),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/$', include(admin.site.urls)),
 )
