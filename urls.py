@@ -9,12 +9,15 @@ urlpatterns = patterns('',
     # url(r'^$', 'FirstBlog.views.home', name='home'),
     # url(r'^FirstBlog/', include('FirstBlog.foo.urls')),
     url(r'^$', 'CST316.blog.views.home', name='home'),
-    url(r'^auth$', 'CST316.blog.views.auth', name='auth'),
+    url(r'^authorize', 'CST316.blog.views.authorize', name='authorize'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/$', include('django.contrib.admindocs.urls')),
     url(r'^test.html$', 'CST316.blog.views.test', name='test'),
     url(r'^postblog$', 'CST316.blog.views.postblog', name='postblog'),
+    url(r'^loginerror$', 'CST316.blog.views.loginerror', name='loginerror'),
+    url(r'^logout', 'CST316.blog.views.logout', name='logout'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/$', include(admin.site.urls)),
 )
+
