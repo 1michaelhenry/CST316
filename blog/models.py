@@ -7,6 +7,3 @@ class posts(models.Model):
         bodytext = models.TextField()
         timestamp = models.DateTimeField(null=True)
 
-class users(models.Model):
-	username = models.CharField(max_length = 30)
-	password = models.CharField(max_length = 30)
