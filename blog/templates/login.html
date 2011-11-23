@@ -1,6 +1,6 @@
-<form name="form1" method="post" action="auth">
+<form name="loginform" method="post" action="auth">
 {% csrf_token %}
-<input name="myusername" type="text" id="myusername"><br />
-<input name="mypassword" type="password" id="mypassword"><br />
+<input name="username" type="text" id="username"><br />
+<input name="password" type="password" id="password"><br />
 <input type="submit" name="Submit" value="Login"><br />
 </form>
