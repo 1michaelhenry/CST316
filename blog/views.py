@@ -16,8 +16,16 @@ def login(request):
 
 def auth(request):
 	entries = posts.objects.all()[:10:-1]
-	return render_to_response('auth.html', {'posts' : entries })
+	return render_to_response('auth.html', {'posts' : entries }, \
+			context_instance=RequestContext(request))
 
 def test(request):
 	return render_to_response('test.html', \
 			context_instance=RequestContext(request))
+
+def postblog(request):
+	post = posts(author=request.POST['author'], title=request.POST['title'], bodytext=request.POST['bodytext'])
+	post.save()
+	entries = posts.objects.all()[:10:-1]
+	return render_to_response('auth.html', {'posts' : entries }, \
+		context_instance=RequestContext(request))
