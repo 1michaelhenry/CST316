@@ -17,3 +17,7 @@ def login(request):
 def auth(request):
 	entries = posts.objects.all()[:10]
 	return render_to_response('auth.html', {'posts' : entries })
+
+def test(request):
+	return render_to_response('test.html', \
+			context_instance=RequestContext(request))
