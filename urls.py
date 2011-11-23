@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^auth', 'CST316.blog.views.auth', name='auth'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^test.html$', 'CST316.blog.views.test', name='test'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
