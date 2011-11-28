@@ -13,7 +13,7 @@ def getauthblog(request):
 	return entries
 
 def home(request):
-        entries = posts.objects.all()[:10:-1]
+        entries = posts.objects.all()[::-1]
         return render_to_response('index.html', {'posts' : entries }, \
 			context_instance=RequestContext(request))
 
