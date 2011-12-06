@@ -1,12 +1,15 @@
+<br /><br />
 <div class="container">
     <hr />
     {% for post in posts %}
         <div class="post">
         <h2>{{ post.title }}</h2>
-        <h3>Posted on {{ post.timestamp }} by {{ post.author }}</h3>
+        <h3>Posted on {{ post.timestamp }} by <a href="{{ post.author }}">{{ post.author }}</a></h3>
         <p>{{ post.bodytext }}</p>
         </div>
         <hr />
+	{% empty %}
+	Nothing to display
         {% endfor %}
 
 </div>

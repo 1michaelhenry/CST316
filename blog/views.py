@@ -12,13 +12,22 @@ def getauthblog(request):
 	entries = entries[:10]
 	return entries
 
+def all(request):
+	entries = posts.objects.all().order_by('-timestamp')
+	return render_to_response('index.html', {'posts' : entries}, \
+			context_instance=RequestContext(request))
+		
+
 def home(request):
-        entries = posts.objects.all()[::-1]
-        return render_to_response('index.html', {'posts' : entries }, \
+	if request.user.is_authenticated():
+		entries = getauthblog(request)
+	else:
+        	entries = posts.objects.all().order_by('-timestamp')
+        return render_to_response('index.html', {'posts' : entries}, \
 			context_instance=RequestContext(request))
 
 def logout(request):
-	del request.session['username']
+	auth.logout(request)
 	return HttpResponseRedirect('/')
 
 def loginerror(request):
@@ -27,17 +36,23 @@ def loginerror(request):
 		context_instance=RequestContext(request))
 
 def authorize(request):
+	if request.user.is_authenticated():
+                return render_to_response(
+                        'auth.html',
+                        {'posts':getauthblog(request),
+                         'user' :request.session['username']},
+                        context_instance=RequestContext(request))
 	if 'username' not in request.POST:
 		return HttpResponseRedirect('loginerror')
 	user = auth.authenticate(
 		username=request.POST['username'],
                 password=request.POST['password'])
         if user is not None:
+		auth.login(request, user)
                 request.session['username'] = request.POST['username']
-                entries = getauthblog(request)
                 return render_to_response(
                         'auth.html',
-                        {'posts':entries,
+                        {'posts':getauthblog(request),
                          'user' :request.session['username']},
                         context_instance=RequestContext(request))
         else:
@@ -78,3 +93,10 @@ def cancelpost(request):
 		{'posts':entries,
 		 'user' :request.session['username']},
 		context_instance=RequestContext(request))
+
+def viewuser(request, user):
+	entries = posts.objects.filter(author=user).order_by('-timestamp')
+	entries = entries[:10]
+	return render_to_response('viewuser.html', {'posts':entries},
+		context_instance=RequestContext(request))
+

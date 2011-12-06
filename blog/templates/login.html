@@ -1,6 +1,13 @@
 <form name="loginform" method="post" action="authorize">
 {% csrf_token %}
-<input name="username" type="text" id="username"><br />
-<input name="password" type="password" id="password"><br />
-<input type="submit" name="Submit" value="Login"><br />
+<table>
+<tr>
+<td>
+Username</td><td><input name="username" type="text" id="username"></td>
+</tr>
+<tr>
+<td>Password</td><td><input name="password" type="password" id="password"></td>
+</tr>
+<tr><td colspan="2"><div style="float:right"><input type="submit" name="Submit" value="Login"></div></td></tr>
+</table>
 </form>
