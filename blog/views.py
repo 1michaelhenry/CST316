@@ -12,17 +12,8 @@ def getauthblog(request):
 	entries = entries[:10]
 	return entries
 
-def all(request):
-	entries = posts.objects.all().order_by('-timestamp')
-	return render_to_response('index.html', {'posts' : entries}, \
-			context_instance=RequestContext(request))
-		
-
 def home(request):
-	if request.user.is_authenticated():
-		entries = getauthblog(request)
-	else:
-        	entries = posts.objects.all().order_by('-timestamp')
+       	entries = posts.objects.all().order_by('-timestamp')
         return render_to_response('index.html', {'posts' : entries}, \
 			context_instance=RequestContext(request))
 

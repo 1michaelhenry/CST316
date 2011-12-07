@@ -18,7 +18,6 @@ urlpatterns = patterns('',
     url(r'^logout', 'CST316.blog.views.logout', name='logout'),
     url(r'^previewblog$', 'CST316.blog.views.previewblog', name='previewblog'),
     url(r'^cancelpost$', 'CST316.blog.views.cancelpost', name='cancelpost'),
-    url(r'^all$', 'CST316.blog.views.all', name='all'),
     url(r'^home$', 'CST316.blog.views.authorize', name='authorize'),
 
     # Uncomment the next line to enable the admin:

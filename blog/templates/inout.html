@@ -1,0 +1,6 @@
+{% if user.is_authenticated %}
+	{% include 'logout.html'%}
+{% else %}
+	{% include 'login.html' %}
+{% endif %}
+
